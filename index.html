@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Paulo Carvão</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:      #1a2744;
+      --gold:      #b8935a;
+      --gold-lt:   #d4a96a;
+      --cream:     #faf8f4;
+      --warm-gray: #f3f0eb;
+      --mid-gray:  #8a8278;
+      --text:      #2c2825;
+      --rule:      #d9d4cc;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      font-size: 16px;
+      line-height: 1.65;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: var(--navy);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2.5rem;
+      height: 62px;
+    }
+    .nav-brand {
+      font-family: 'EB Garamond', serif;
+      font-size: 1.2rem;
+      color: #fff;
+      letter-spacing: 0.03em;
+      text-decoration: none;
+    }
+    .nav-links {
+      display: flex;
+      gap: 1.8rem;
+      list-style: none;
+    }
+    .nav-links a {
+      color: rgba(255,255,255,0.78);
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--gold-lt); }
+
+    /* ── HERO ── */
+    .hero {
+      padding: 140px 2.5rem 80px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .hero-eyebrow {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+    .hero h1 {
+      font-family: 'EB Garamond', serif;
+      font-size: clamp(2.6rem, 5vw, 3.8rem);
+      font-weight: 500;
+      line-height: 1.12;
+      color: var(--navy);
+      margin-bottom: 1.4rem;
+    }
+    .hero-rule {
+      width: 56px;
+      height: 3px;
+      background: var(--gold);
+      margin-bottom: 1.8rem;
+    }
+    .hero p {
+      font-size: 1.07rem;
+      color: #4a453f;
+      max-width: 680px;
+      line-height: 1.78;
+    }
+    .hero-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 2.2rem;
+    }
+    .pill {
+      display: inline-block;
+      padding: 0.42rem 1.1rem;
+      border: 1.5px solid var(--navy);
+      color: var(--navy);
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: background 0.18s, color 0.18s;
+    }
+    .pill:hover { background: var(--navy); color: #fff; }
+
+    /* ── SECTIONS ── */
+    section {
+      padding: 72px 2.5rem;
+      max-width: 900px;
+      margin: 0 auto;
+      border-top: 1px solid var(--rule);
+    }
+    .section-label {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.6rem;
+    }
+    h2 {
+      font-family: 'EB Garamond', serif;
+      font-size: clamp(1.7rem, 3vw, 2.2rem);
+      font-weight: 500;
+      color: var(--navy);
+      margin-bottom: 2rem;
+      line-height: 1.2;
+    }
+
+    /* ── AFFILIATIONS GRID ── */
+    .affil-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+    .affil-card {
+      background: #fff;
+      border: 1px solid var(--rule);
+      border-left: 4px solid var(--gold);
+      padding: 1.4rem 1.5rem;
+      border-radius: 0 3px 3px 0;
+    }
+    .affil-card h3 {
+      font-family: 'EB Garamond', serif;
+      font-size: 1.05rem;
+      color: var(--navy);
+      margin-bottom: 0.25rem;
+      font-weight: 600;
+    }
+    .affil-card .role {
+      font-size: 0.82rem;
+      color: var(--mid-gray);
+      font-style: italic;
+      margin-bottom: 0.6rem;
+    }
+    .affil-card p {
+      font-size: 0.88rem;
+      color: #5a554f;
+      line-height: 1.6;
+    }
+
+    /* ── CAREER ── */
+    .career-block {
+      display: flex;
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+    .career-left {
+      flex: 0 0 160px;
+      text-align: right;
+      padding-top: 0.15rem;
+    }
+    .career-years {
+      font-size: 0.78rem;
+      color: var(--gold);
+      font-weight: 600;
+      letter-spacing: 0.04em;
+    }
+    .career-right {
+      flex: 1;
+      border-left: 2px solid var(--rule);
+      padding-left: 1.8rem;
+    }
+    .career-right h3 {
+      font-family: 'EB Garamond', serif;
+      font-size: 1.08rem;
+      color: var(--navy);
+      font-weight: 600;
+      margin-bottom: 0.2rem;
+    }
+    .career-right .org {
+      font-size: 0.82rem;
+      color: var(--mid-gray);
+      margin-bottom: 0.5rem;
+      font-style: italic;
+    }
+    .career-right p {
+      font-size: 0.91rem;
+      color: #5a554f;
+      line-height: 1.65;
+    }
+
+    /* ── PUBLICATIONS ── */
+    .pubs-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .pub-item {
+      display: flex;
+      align-items: baseline;
+      gap: 1.2rem;
+      padding: 1.15rem 0;
+      border-bottom: 1px solid var(--rule);
+      text-decoration: none;
+      color: inherit;
+      transition: background 0.15s;
+    }
+    .pub-item:first-child { border-top: 1px solid var(--rule); }
+    .pub-item:hover { background: var(--warm-gray); margin: 0 -1rem; padding-left: 1rem; padding-right: 1rem; }
+    .pub-source {
+      flex: 0 0 130px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .pub-info { flex: 1; }
+    .pub-title {
+      font-family: 'EB Garamond', serif;
+      font-size: 1.07rem;
+      color: var(--navy);
+      font-weight: 500;
+      line-height: 1.35;
+      margin-bottom: 0.2rem;
+    }
+    .pub-desc {
+      font-size: 0.83rem;
+      color: var(--mid-gray);
+      line-height: 1.5;
+    }
+    .pub-date {
+      flex: 0 0 80px;
+      text-align: right;
+      font-size: 0.75rem;
+      color: var(--mid-gray);
+      white-space: nowrap;
+    }
+    .pub-arrow {
+      flex: 0 0 18px;
+      color: var(--gold);
+      font-size: 0.9rem;
+    }
+
+    /* ── PODCAST ── */
+    .podcast-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1.2rem;
+    }
+    .podcast-card {
+      background: var(--navy);
+      color: #fff;
+      padding: 1.5rem 1.4rem;
+      border-radius: 3px;
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      transition: background 0.18s;
+    }
+    .podcast-card:hover { background: #223060; }
+    .podcast-card .pod-source {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold-lt);
+    }
+    .podcast-card .pod-title {
+      font-family: 'EB Garamond', serif;
+      font-size: 1.05rem;
+      line-height: 1.35;
+      font-weight: 500;
+    }
+    .podcast-card .pod-desc {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.62);
+      line-height: 1.5;
+    }
+    .podcast-card .pod-date {
+      font-size: 0.72rem;
+      color: var(--gold-lt);
+      margin-top: auto;
+    }
+
+    /* ── SCHOLAR ── */
+    .scholar-note {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: var(--warm-gray);
+      border: 1px solid var(--rule);
+      padding: 1rem 1.5rem;
+      border-radius: 3px;
+      text-decoration: none;
+      color: var(--navy);
+      font-size: 0.92rem;
+      font-family: 'EB Garamond', serif;
+      transition: border-color 0.18s;
+    }
+    .scholar-note:hover { border-color: var(--gold); }
+    .scholar-icon { font-size: 1.3rem; }
+
+    /* ── CONTACT / FOOTER ── */
+    footer {
+      background: var(--navy);
+      color: rgba(255,255,255,0.7);
+      padding: 3rem 2.5rem;
+      margin-top: 2rem;
+    }
+    .footer-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+    .footer-name {
+      font-family: 'EB Garamond', serif;
+      font-size: 1.3rem;
+      color: #fff;
+      margin-bottom: 0.35rem;
+    }
+    .footer-tagline {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.5);
+    }
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      text-align: right;
+    }
+    .footer-links a {
+      font-size: 0.82rem;
+      color: var(--gold-lt);
+      text-decoration: none;
+      letter-spacing: 0.03em;
+    }
+    .footer-links a:hover { color: #fff; }
+    .footer-copy {
+      max-width: 900px;
+      margin: 2rem auto 0;
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.35);
+      border-top: 1px solid rgba(255,255,255,0.12);
+      padding-top: 1rem;
+    }
+
+    @media (max-width: 640px) {
+      nav { padding: 0 1.2rem; }
+      .nav-links { gap: 1rem; }
+      .hero, section { padding-left: 1.2rem; padding-right: 1.2rem; }
+      .career-block { flex-direction: column; gap: 0.5rem; }
+      .career-left { text-align: left; flex: unset; }
+      .career-right { border-left: none; border-top: 2px solid var(--rule); padding-left: 0; padding-top: 0.8rem; }
+      .pub-source { flex: 0 0 90px; }
+      .pub-date, .pub-arrow { display: none; }
+      .footer-inner { flex-direction: column; }
+      .footer-links { text-align: left; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-brand" href="#top">Paulo Carvão</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#academic">Academic</a></li>
+    <li><a href="#career">Career</a></li>
+    <li><a href="#writing">Writing</a></li>
+    <li><a href="#media">Media</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div id="top" class="hero">
+  <div class="hero-eyebrow">Senior Fellow · Harvard Kennedy School</div>
+  <h1>Paulo Carvão</h1>
+  <div class="hero-rule"></div>
+  <p>
+    Paulo Carvão is a Senior Fellow at Harvard Kennedy School's Mossavar-Rahmani Center for Business and Government, where he focuses on Tech Policy and AI regulation. A former IBM executive with over 30 years of experience in technology and business, he currently advises tech startups, invests in venture capital, and serves as the inaugural Entrepreneur-in-Residence at Harvard Kennedy School's GovLab. He writes for Forbes, Harvard Business Review, Fast Company, The Conversation, Lawfare, The Hill, and other publications.
+  </p>
+  <div class="hero-links">
+    <a class="pill" href="https://www.linkedin.com/in/paulocarvao/" target="_blank" rel="noopener">LinkedIn</a>
+    <a class="pill" href="https://www.forbes.com/sites/paulocarvao/" target="_blank" rel="noopener">Forbes</a>
+    <a class="pill" href="https://carvao.substack.com/" target="_blank" rel="noopener">Substack</a>
+    <a class="pill" href="https://scholar.google.com/citations?user=PI3o78MAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>
+  </div>
+</div>
+
+<!-- ACADEMIC -->
+<section id="academic">
+  <div class="section-label">Academic &amp; Research</div>
+  <h2>Fellowships &amp; Affiliations</h2>
+  <div class="affil-grid">
+
+    <div class="affil-card">
+      <h3>Mossavar-Rahmani Center for Business and Government</h3>
+      <div class="role">Senior Fellow · Harvard Kennedy School</div>
+      <p>Conducts research on Tech Policy, AI governance, and the intersection of technology and democratic institutions.</p>
+    </div>
+
+    <div class="affil-card">
+      <h3>GovLab · Harvard Kennedy School</h3>
+      <div class="role">Inaugural Entrepreneur-in-Residence</div>
+      <p>Serves as the first Entrepreneur-in-Residence, bridging private-sector innovation and public-sector policy at HKS's governance lab.</p>
+    </div>
+
+    <div class="affil-card">
+      <h3>Advanced Leadership Initiative</h3>
+      <div class="role">Fellow (former) · Harvard University</div>
+      <p>Completed the ALI fellowship, which brings senior leaders to Harvard to apply their experience to pressing societal challenges.</p>
+    </div>
+
+    <div class="affil-card">
+      <h3>Safra Center for Ethics</h3>
+      <div class="role">Fellow (former) · Harvard University</div>
+      <p>Held a fellowship at the Safra Center, focusing on campus intellectual vitality, ethical reflection, and civil disagreement.</p>
+    </div>
+
+  </div>
+
+  <div style="margin-top: 2.5rem;">
+    <p class="section-label" style="margin-bottom:0.8rem;">Scholarship</p>
+    <a class="scholar-note" href="https://scholar.google.com/citations?user=PI3o78MAAAAJ&hl=en" target="_blank" rel="noopener">
+      <span class="scholar-icon">🎓</span>
+      <span>View academic publications and citations on Google Scholar →</span>
+    </a>
+  </div>
+</section>
+
+<!-- CAREER -->
+<section id="career">
+  <div class="section-label">Professional Experience</div>
+  <h2>Career</h2>
+
+  <div class="career-block">
+    <div class="career-left">
+      <div class="career-years">2023 – Present</div>
+    </div>
+    <div class="career-right">
+      <h3>Senior Fellow &amp; Entrepreneur-in-Residence</h3>
+      <div class="org">Harvard Kennedy School</div>
+      <p>Researches AI policy and tech regulation at the Mossavar-Rahmani Center for Business and Government, and serves as the inaugural Entrepreneur-in-Residence at GovLab. Advises tech startups and invests in venture capital.</p>
+    </div>
+  </div>
+
+  <div class="career-block">
+    <div class="career-left">
+      <div class="career-years">1985 – 2022</div>
+    </div>
+    <div class="career-right">
+      <h3>Executive Career</h3>
+      <div class="org">IBM Corporation</div>
+      <p>Spent over 30 years at IBM in progressively senior roles spanning technology, sales, and general management. Rising to General Management level and membership in the Performance Team — the senior leadership team responsible for the company's operational performance. Held roles including Systems Hardware General Manager, overseeing IBM's global hardware business across multiple geographies.</p>
+    </div>
+  </div>
+
+</section>
+
+<!-- WRITING -->
+<section id="writing">
+  <div class="section-label">Writing &amp; Publications</div>
+  <h2>Selected Articles</h2>
+  <div class="pubs-list">
+
+    <a class="pub-item" href="https://hbr.org/2025/10/is-ai-a-boom-or-a-bubble" target="_blank" rel="noopener">
+      <div class="pub-source">HBR</div>
+      <div class="pub-info">
+        <div class="pub-title">Is AI a Boom or a Bubble?</div>
+        <div class="pub-desc">Examines whether the current wave of massive AI investment represents a genuine economic boom or a speculative bubble akin to the dot-com era.</div>
+      </div>
+      <div class="pub-date">Oct 2025</div>
+      <div class="pub-arrow">↗</div>
+    </a>
+
+    <a class="pub-item" href="https://www.fastcompany.com/91443866/ai-bubble-economy-data-center-economy-palantir-open-ai" target="_blank" rel="noopener">
+      <div class="pub-source">Fast Company</div>
+      <div class="pub-info">
+        <div class="pub-title">Beating the AI Bubble</div>
+        <div class="pub-desc">Surveys the breadth of the AI economy, arguing that durable winners will be those who can outpace a potential market correction through real productivity gains.</div>
+      </div>
+      <div class="pub-date">Nov 2025</div>
+      <div class="pub-arrow">↗</div>
+    </a>
+
+    <a class="pub-item" href="https://theconversation.com/beyond-ai-regulation-how-government-and-industry-can-team-up-to-make-the-technology-safer-without-hindering-innovation-251010" target="_blank" rel="noopener">
+      <div class="pub-source">The Conversation</div>
+      <div class="pub-info">
+        <div class="pub-title">Beyond AI Regulation: How Government and Industry Can Team Up</div>
+        <div class="pub-desc">Proposes a Dynamic Governance Model built on public-private partnerships as a policy-agnostic alternative to blanket AI regulation.</div>
+      </div>
+      <div class="pub-date">Apr 2025</div>
+      <div class="pub-arrow">↗</div>
+    </a>
+
+    <a class="pub-item" href="https://www.lawfaremedia.org/article/a-dynamic-governance-model-for-ai" target="_blank" rel="noopener">
+      <div class="pub-source">Lawfare</div>
+      <div class="pub-info">
+        <div class="pub-title">A Dynamic Governance Model for AI</div>
+        <div class="pub-desc">Based on nearly 50 interviews with industry leaders and policymakers, proposes a policy-neutral governance framework combining public-private standards-setting with a market-based audit ecosystem.</div>
+      </div>
+      <div class="pub-date">Mar 2025</div>
+      <div class="pub-arrow">↗</div>
+    </a>
+
+    <a class="pub-item" href="https://thehill.com/opinion/technology/4939175-ai-regulatory-limbo-congress/" target="_blank" rel="noopener">
+      <div class="pub-source">The Hill</div>
+      <div class="pub-info">
+        <div class="pub-title">The 3 Major Decisions the Next Congress Must Make About AI Policy</div>
+        <div class="pub-desc">Argues that Congress's failure to pass any AI legislation has created a dangerous regulatory vacuum, and outlines three foundational choices the next Congress must make.</div>
+      </div>
+      <div class="pub-date">Oct 2024</div>
+      <div class="pub-arrow">↗</div>
+    </a>
+
+    <a class="pub-item" href="https://www.sir.advancedleadership.harvard.edu/articles/supreme-court-spoken-gonzalez-v-google-now-congresss-turn-section-230" target="_blank" rel="noopener">
+      <div class="pub-source">Harvard Social Impact Review</div>
+      <div class="pub-info">
+        <div class="pub-title">The Supreme Court Has Spoken on Gonzalez v. Google — Now It's Congress's Turn</div>
+        <div class="pub-desc">Analyzes the Court's narrow ruling declining to revisit Section 230, and contends the decision passes the legislative burden back to Congress at a moment of urgent new questions raised by generative AI.</div>
+      </div>
+      <div class="pub-date">2023</div>
+      <div class="pub-arrow">↗</div>
+    </a>
+
+  </div>
+
+  <div style="margin-top: 2.5rem;">
+    <div class="section-label" style="margin-bottom: 0.8rem;">Regular Columns &amp; Newsletter</div>
+    <div class="affil-grid">
+      <div class="affil-card">
+        <h3>Forbes</h3>
+        <div class="role">Contributor</div>
+        <p>Writes a regular column covering AI regulation, the future of work, and the political economy of technology. Recent pieces include analyses of AI limits, executive orders affecting state AI laws, and human-centered AI adoption.</p>
+        <a href="https://www.forbes.com/sites/paulocarvao/" target="_blank" rel="noopener" style="display:inline-block; margin-top:0.75rem; font-size:0.78rem; color:var(--gold); text-decoration:none; font-weight:600;">Read on Forbes →</a>
+      </div>
+      <div class="affil-card">
+        <h3>Tech and Democracy</h3>
+        <div class="role">Author · Substack</div>
+        <p>"Technology for the good" — a newsletter examining AI, regulation, and the health of democratic institutions. Many posts are cross-published from Forbes and other outlets, with original analysis on policy developments.</p>
+        <a href="https://carvao.substack.com/" target="_blank" rel="noopener" style="display:inline-block; margin-top:0.75rem; font-size:0.78rem; color:var(--gold); text-decoration:none; font-weight:600;">Subscribe on Substack →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MEDIA & PODCASTS -->
+<section id="media">
+  <div class="section-label">Media &amp; Podcasts</div>
+  <h2>Selected Appearances</h2>
+  <div class="podcast-grid">
+
+    <a class="podcast-card" href="https://www.wbur.org/onpoint/2026/01/09/nvidia-ai-chip-race-with-china-trump" target="_blank" rel="noopener">
+      <div class="pod-source">WBUR · On Point</div>
+      <div class="pod-title">A Strange Turn in the AI Chip Race with China</div>
+      <div class="pod-desc">Examines the national security implications of Nvidia AI chip policy and what the decision signals about the U.S.–China technology competition.</div>
+      <div class="pod-date">January 2026</div>
+    </a>
+
+    <a class="podcast-card" href="https://www.deezer.com/br/episode/803243092" target="_blank" rel="noopener">
+      <div class="pod-source">Podcast · Deezer</div>
+      <div class="pod-title">AI: Neither Bubble Nor Miracle</div>
+      <div class="pod-desc">Discussion on the economic realities of AI investment, arguing against both excessive hype and premature dismissal of the technology's transformative potential.</div>
+      <div class="pod-date">2025</div>
+    </a>
+
+    <a class="podcast-card" href="https://www.linkedin.com/pulse/intelig%C3%AAncia-artificial-nem-bolha-milagre-mas-uma-bianca-pacheco-4okkf/" target="_blank" rel="noopener">
+      <div class="pod-source">LinkedIn · Podcast</div>
+      <div class="pod-title">Inteligência Artificial: Nem Bolha, Nem Milagre</div>
+      <div class="pod-desc">Portuguese-language conversation on AI's realistic trajectory, balancing skepticism about speculative valuations with recognition of genuine technological progress.</div>
+      <div class="pod-date">2025</div>
+    </a>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-name">Paulo Carvão</div>
+      <div class="footer-tagline">Senior Fellow, Harvard Kennedy School · Technology Policy &amp; AI Regulation</div>
+    </div>
+    <div class="footer-links">
+      <a href="https://www.linkedin.com/in/paulocarvao/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://www.forbes.com/sites/paulocarvao/" target="_blank" rel="noopener">Forbes</a>
+      <a href="https://carvao.substack.com/" target="_blank" rel="noopener">Substack · Tech and Democracy</a>
+      <a href="https://scholar.google.com/citations?user=PI3o78MAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>
+    </div>
+  </div>
+  <div class="footer-copy">
+    © 2026 Paulo Carvão. All rights reserved.
+  </div>
+</footer>
+
+</body>
+</html>
